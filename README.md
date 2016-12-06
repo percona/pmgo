@@ -2,6 +2,7 @@
 
 [![](https://godoc.org/github.com/percona/toolkit-go/pmgo?status.svg)](https://godoc.org/github.com/percona/toolkit-go/pmgo)
 
+**WIP** NOT ALL INTERFACES HAVE BEEN IMPLEMENTED YET  
 
 This is just a collection of interfaces around the structures in mgo, ([Rich MongoDB driver for Go](https://labix.org/mgo)) to be able to mock methods in the driver.  
 
