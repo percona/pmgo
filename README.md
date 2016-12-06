@@ -101,7 +101,9 @@ func TestGetUser(t *testing.T) {
 
     session := pmgomock.NewMockSessionManager(ctrl)
     session.EXPECT().DB("test").Return(database)
-    edUser, err := getUser(session, 1)
+
+    // Call the function we want to test. It will use the mocked interfaces
+    readUser, err := getUser(session, 1)
    
      if err != nil {
          t.Errorf("getUser returned an error: %s\n", err.Error())
