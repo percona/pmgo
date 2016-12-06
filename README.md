@@ -12,7 +12,7 @@ Also, for some of our tests we need very specific MongoDB configuration. Tests f
 
 This package is almost a drop-in replacement with the exception that you need to use the `Dialer` interface.
 
-```
+```go
 package main
 
 import (
