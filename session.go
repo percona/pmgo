@@ -4,12 +4,12 @@ import mgo "gopkg.in/mgo.v2"
 
 type SessionManager interface {
 	BuildInfo() (info mgo.BuildInfo, err error)
-	// Clone() SessionManager
+	Clone() SessionManager
 	Close()
-	// Copy() *SessionManager
+	Copy() SessionManager
 	DB(name string) DatabaseManager
 	DatabaseNames() (names []string, err error)
-	// EnsureSafe(safe *Safe)
+	EnsureSafe(safe *mgo.Safe)
 	// FindRef(ref *DBRef) *Query
 	// Fsync(async bool) error
 	// FsyncLock() error
@@ -19,7 +19,7 @@ type SessionManager interface {
 	// LogoutAll()
 	// Mode() Mode
 	// New() *SessionManager
-	// Ping() error
+	Ping() error
 	// Refresh()
 	// ResetIndexCache()
 	Run(cmd interface{}, result interface{}) error
@@ -48,11 +48,22 @@ func (s *Session) Close() {
 	s.session.Close()
 }
 
+func (s *Session) Clone() SessionManager {
+	return &Session{
+		session: s.session.Clone(),
+	}
+}
+
+func (s *Session) Copy() SessionManager {
+	return &Session{
+		session: s.session.Copy(),
+	}
+}
+
 func (s *Session) DB(name string) DatabaseManager {
 	d := &Database{
 		db: s.session.DB(name),
 	}
-
 	return d
 }
 
@@ -60,6 +71,14 @@ func (s *Session) DatabaseNames() (names []string, err error) {
 	return s.session.DatabaseNames()
 }
 
+func (s *Session) EnsureSafe(safe *mgo.Safe) {
+	s.session.EnsureSafe(safe)
+}
+
 func (s *Session) Run(cmd interface{}, result interface{}) error {
 	return s.session.Run(cmd, result)
+}
+
+func (s *Session) Ping() error {
+	return s.session.Ping()
 }
