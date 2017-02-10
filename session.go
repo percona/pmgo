@@ -28,7 +28,7 @@ type SessionManager interface {
 	// SetBatch(n int)
 	// SetBypassValidation(bypass bool)
 	// SetCursorTimeout(d time.Duration)
-	// SetMode(consistency Mode, refresh bool)
+	SetMode(consistency mgo.Mode, refresh bool)
 	// SetPoolLimit(limit int)
 	// SetPrefetch(p float64)
 	// SetSafe(safe *Safe)
@@ -81,4 +81,8 @@ func (s *Session) Run(cmd interface{}, result interface{}) error {
 
 func (s *Session) Ping() error {
 	return s.session.Ping()
+}
+
+func (s *Session) SetMode(consistency mgo.Mode, refresh bool) {
+	s.session.SetMode(consistency, refresh)
 }
