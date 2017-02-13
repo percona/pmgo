@@ -17,7 +17,7 @@ type CollectionManager interface {
 	//Indexes() (indexes []mgo.Index, err error)
 	Insert(docs ...interface{}) error
 	//NewIter(session *mgo.Session, firstBatch []bson.Raw, cursorId int64, err error) *mgo.Iter
-	Pipe(interface{}) *mgo.Pipe
+	Pipe(interface{}) PipeManager
 	//Remove(selector interface{}) error
 	//RemoveAll(selector interface{}) (info *mgo.ChangeInfo, err error)
 	//RemoveId(id interface{}) error
@@ -52,6 +52,9 @@ func (c *Collection) Insert(docs ...interface{}) error {
 	return c.collection.Insert(docs...)
 }
 
-func (c *Collection) Pipe(query interface{}) *mgo.Pipe {
-	return c.collection.Pipe(query)
+func (c *Collection) Pipe(query interface{}) PipeManager {
+	col := &Collection{
+		collection: c.collection,
+	}
+	return col.Pipe(query)
 }

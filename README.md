@@ -163,3 +163,11 @@ func tearDown() {
     Server.Stop()
 }
 ```
+
+
+## Generating new mocks
+If you update a file to add more functions, you can create new mocks by running:  
+```
+mockgen -source <path>/pmgo/collection.go -destination=<path>/pmgo/pmgomock/collection.go -package pmgomock -imports ".=github.com/percona/pmgo"
+```
+
