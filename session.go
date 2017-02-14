@@ -40,6 +40,18 @@ type Session struct {
 	session *mgo.Session
 }
 
+// This methos allows to use mgo's dbtest.DBServer in pmgo tests.
+// Example:
+// var Server dbtest.DBServer
+// tempDir, _ := ioutil.TempDir("", "testing")
+// Server.SetPath(tempDir)
+// session := NewSessionManager(Server.Session())
+func NewSessionManager(s *mgo.Session) SessionManager {
+	return &Session{
+		session: s,
+	}
+}
+
 func (s *Session) BuildInfo() (info mgo.BuildInfo, err error) {
 	return s.session.BuildInfo()
 }

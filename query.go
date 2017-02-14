@@ -30,6 +30,12 @@ type Query struct {
 	query *mgo.Query
 }
 
+func NewQueryManager(q *mgo.Query) QueryManager {
+	return &Query{
+		query: q,
+	}
+}
+
 func (q *Query) All(result interface{}) error {
 	return q.query.All(result)
 }

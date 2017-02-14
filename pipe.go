@@ -15,6 +15,12 @@ type Pipe struct {
 	pipe *mgo.Pipe
 }
 
+func NewPipeManager(p *mgo.Pipe) PipeManager {
+	return &Pipe{
+		pipe: p,
+	}
+}
+
 func (p *Pipe) All(result interface{}) error {
 	return p.pipe.All(result)
 }

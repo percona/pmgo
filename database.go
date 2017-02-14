@@ -21,6 +21,12 @@ type Database struct {
 	db *mgo.Database
 }
 
+func NewDatabaseManager(d *mgo.Database) DatabaseManager {
+	return &Database{
+		db: d,
+	}
+}
+
 func (d *Database) C(name string) CollectionManager {
 	c := &Collection{
 		collection: d.db.C(name),

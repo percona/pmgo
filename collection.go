@@ -34,6 +34,12 @@ type Collection struct {
 	collection *mgo.Collection
 }
 
+func NewCollectionManager(c *mgo.Collection) CollectionManager {
+	return &Collection{
+		collection: c,
+	}
+}
+
 func (c *Collection) Count() (int, error) {
 	return c.collection.Count()
 }
@@ -53,8 +59,8 @@ func (c *Collection) Insert(docs ...interface{}) error {
 }
 
 func (c *Collection) Pipe(query interface{}) PipeManager {
-	col := &Collection{
-		collection: c.collection,
+	return &Pipe{
+		pipe: c.collection.Pipe(query),
 	}
-	return col.Pipe(query)
+
 }
