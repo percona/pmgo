@@ -62,5 +62,4 @@ func (c *Collection) Pipe(query interface{}) PipeManager {
 	return &Pipe{
 		pipe: c.collection.Pipe(query),
 	}
-
 }

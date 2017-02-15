@@ -6,7 +6,7 @@ package pmgomock
 import (
 	gomock "github.com/golang/mock/gomock"
 	. "github.com/percona/pmgo"
-	mgo "gopkg.in/mgo.v2"
+	mgo_v2 "gopkg.in/mgo.v2"
 )
 
 // Mock of SessionManager interface
@@ -30,9 +30,9 @@ func (_m *MockSessionManager) EXPECT() *_MockSessionManagerRecorder {
 	return _m.recorder
 }
 
-func (_m *MockSessionManager) BuildInfo() (mgo.BuildInfo, error) {
+func (_m *MockSessionManager) BuildInfo() (mgo_v2.BuildInfo, error) {
 	ret := _m.ctrl.Call(_m, "BuildInfo")
-	ret0, _ := ret[0].(mgo.BuildInfo)
+	ret0, _ := ret[0].(mgo_v2.BuildInfo)
 	ret1, _ := ret[1].(error)
 	return ret0, ret1
 }
@@ -90,7 +90,7 @@ func (_mr *_MockSessionManagerRecorder) DatabaseNames() *gomock.Call {
 	return _mr.mock.ctrl.RecordCall(_mr.mock, "DatabaseNames")
 }
 
-func (_m *MockSessionManager) EnsureSafe(safe *mgo.Safe) {
+func (_m *MockSessionManager) EnsureSafe(safe *mgo_v2.Safe) {
 	_m.ctrl.Call(_m, "EnsureSafe", safe)
 }
 
@@ -118,7 +118,7 @@ func (_mr *_MockSessionManagerRecorder) Run(arg0, arg1 interface{}) *gomock.Call
 	return _mr.mock.ctrl.RecordCall(_mr.mock, "Run", arg0, arg1)
 }
 
-func (_m *MockSessionManager) SetMode(consistency mgo.Mode, refresh bool) {
+func (_m *MockSessionManager) SetMode(consistency mgo_v2.Mode, refresh bool) {
 	_m.ctrl.Call(_m, "SetMode", consistency, refresh)
 }
 
