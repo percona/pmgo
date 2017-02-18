@@ -6,7 +6,6 @@ package pmgomock
 import (
 	gomock "github.com/golang/mock/gomock"
 	. "github.com/percona/pmgo"
-	mgo_v2 "gopkg.in/mgo.v2"
 	time "time"
 )
 
@@ -42,7 +41,7 @@ func (_mr *_MockDialerRecorder) Dial(arg0 interface{}) *gomock.Call {
 	return _mr.mock.ctrl.RecordCall(_mr.mock, "Dial", arg0)
 }
 
-func (_m *MockDialer) DialWithInfo(_param0 *mgo_v2.DialInfo) (SessionManager, error) {
+func (_m *MockDialer) DialWithInfo(_param0 *DialInfo) (SessionManager, error) {
 	ret := _m.ctrl.Call(_m, "DialWithInfo", _param0)
 	ret0, _ := ret[0].(SessionManager)
 	ret1, _ := ret[1].(error)
