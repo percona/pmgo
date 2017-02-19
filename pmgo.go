@@ -19,18 +19,8 @@ type Dialer interface {
 }
 
 type DialInfo struct {
-	CACertFile string
-	/* ClientCertFile and ClientCertKey can be the same file, as long as it
-	   has both, certificate and key in it, like:
-	   -----BEGIN PRIVATE KEY-----
-	   ABCDEF0123456789...
-	   -----END PRIVATE KEY-----
-	   -----BEGIN CERTIFICATE-----
-	   9876543210FEDCBA...
-	   -----END CERTIFICATE-----
-	*/
-	ClientCertFile string
-	ClientKeyFile  string
+	SSLPEMKeyFile string
+	SSLCAFile     string
 
 	Addrs          []string
 	Direct         bool
@@ -80,11 +70,11 @@ func (d *dialer) DialWithInfo(info *DialInfo) (SessionManager, error) {
 		DialServer:     info.DialServer,
 	}
 
-	if info.CACertFile != "" || info.ClientCertFile != "" || info.ClientKeyFile != "" {
+	if info.SSLCAFile != "" || info.SSLPEMKeyFile != "" {
 		tlsConfig := &tls.Config{}
 
-		if info.CACertFile != "" {
-			if _, err := os.Stat(info.CACertFile); os.IsNotExist(err) {
+		if info.SSLCAFile != "" {
+			if _, err := os.Stat(info.SSLCAFile); os.IsNotExist(err) {
 				return nil, err
 			}
 
@@ -92,7 +82,7 @@ func (d *dialer) DialWithInfo(info *DialInfo) (SessionManager, error) {
 			var ca []byte
 			var err error
 
-			if ca, err = ioutil.ReadFile(info.CACertFile); err != nil {
+			if ca, err = ioutil.ReadFile(info.SSLCAFile); err != nil {
 				return nil, fmt.Errorf("invalid pem file: %s", err.Error())
 			}
 			roots.AppendCertsFromPEM(ca)
@@ -100,8 +90,8 @@ func (d *dialer) DialWithInfo(info *DialInfo) (SessionManager, error) {
 
 		}
 
-		if info.ClientCertFile != "" && info.ClientKeyFile != "" {
-			cert, err := tls.LoadX509KeyPair(info.ClientCertFile, info.ClientKeyFile)
+		if info.SSLPEMKeyFile != "" {
+			cert, err := tls.LoadX509KeyPair(info.SSLPEMKeyFile, info.SSLPEMKeyFile)
 			if err != nil {
 				return nil, err
 			}
