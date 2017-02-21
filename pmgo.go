@@ -40,6 +40,25 @@ type DialInfo struct {
 
 type dialer struct{}
 
+func NewDialInfo(src *mgo.DialInfo) *DialInfo {
+	return &DialInfo{
+		Addrs:          src.Addrs,
+		Direct:         src.Direct,
+		Timeout:        src.Timeout,
+		FailFast:       src.FailFast,
+		Database:       src.Database,
+		ReplicaSetName: src.ReplicaSetName,
+		Source:         src.Source,
+		Service:        src.Service,
+		ServiceHost:    src.ServiceHost,
+		Mechanism:      src.Mechanism,
+		Username:       src.Username,
+		Password:       src.Password,
+		PoolLimit:      src.PoolLimit,
+		DialServer:     src.DialServer,
+	}
+}
+
 func NewDialer() Dialer {
 	return new(dialer)
 }
