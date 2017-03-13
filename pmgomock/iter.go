@@ -5,7 +5,6 @@ package pmgomock
 
 import (
 	gomock "github.com/golang/mock/gomock"
-	. "github.com/percona/pmgo"
 )
 
 // Mock of IterManager interface
