@@ -7,6 +7,8 @@ import (
 	gomock "github.com/golang/mock/gomock"
 	. "github.com/percona/pmgo"
 	mgo_v2 "gopkg.in/mgo.v2"
+	bson "gopkg.in/mgo.v2/bson"
+	time "time"
 )
 
 // Mock of SessionManager interface
@@ -98,6 +100,94 @@ func (_mr *_MockSessionManagerRecorder) EnsureSafe(arg0 interface{}) *gomock.Cal
 	return _mr.mock.ctrl.RecordCall(_mr.mock, "EnsureSafe", arg0)
 }
 
+func (_m *MockSessionManager) FindRef(ref *mgo_v2.DBRef) QueryManager {
+	ret := _m.ctrl.Call(_m, "FindRef", ref)
+	ret0, _ := ret[0].(QueryManager)
+	return ret0
+}
+
+func (_mr *_MockSessionManagerRecorder) FindRef(arg0 interface{}) *gomock.Call {
+	return _mr.mock.ctrl.RecordCall(_mr.mock, "FindRef", arg0)
+}
+
+func (_m *MockSessionManager) Fsync(async bool) error {
+	ret := _m.ctrl.Call(_m, "Fsync", async)
+	ret0, _ := ret[0].(error)
+	return ret0
+}
+
+func (_mr *_MockSessionManagerRecorder) Fsync(arg0 interface{}) *gomock.Call {
+	return _mr.mock.ctrl.RecordCall(_mr.mock, "Fsync", arg0)
+}
+
+func (_m *MockSessionManager) FsyncLock() error {
+	ret := _m.ctrl.Call(_m, "FsyncLock")
+	ret0, _ := ret[0].(error)
+	return ret0
+}
+
+func (_mr *_MockSessionManagerRecorder) FsyncLock() *gomock.Call {
+	return _mr.mock.ctrl.RecordCall(_mr.mock, "FsyncLock")
+}
+
+func (_m *MockSessionManager) FsyncUnlock() error {
+	ret := _m.ctrl.Call(_m, "FsyncUnlock")
+	ret0, _ := ret[0].(error)
+	return ret0
+}
+
+func (_mr *_MockSessionManagerRecorder) FsyncUnlock() *gomock.Call {
+	return _mr.mock.ctrl.RecordCall(_mr.mock, "FsyncUnlock")
+}
+
+func (_m *MockSessionManager) LiveServers() []string {
+	ret := _m.ctrl.Call(_m, "LiveServers")
+	ret0, _ := ret[0].([]string)
+	return ret0
+}
+
+func (_mr *_MockSessionManagerRecorder) LiveServers() *gomock.Call {
+	return _mr.mock.ctrl.RecordCall(_mr.mock, "LiveServers")
+}
+
+func (_m *MockSessionManager) Login(cred *mgo_v2.Credential) error {
+	ret := _m.ctrl.Call(_m, "Login", cred)
+	ret0, _ := ret[0].(error)
+	return ret0
+}
+
+func (_mr *_MockSessionManagerRecorder) Login(arg0 interface{}) *gomock.Call {
+	return _mr.mock.ctrl.RecordCall(_mr.mock, "Login", arg0)
+}
+
+func (_m *MockSessionManager) LogoutAll() {
+	_m.ctrl.Call(_m, "LogoutAll")
+}
+
+func (_mr *_MockSessionManagerRecorder) LogoutAll() *gomock.Call {
+	return _mr.mock.ctrl.RecordCall(_mr.mock, "LogoutAll")
+}
+
+func (_m *MockSessionManager) Mode() mgo_v2.Mode {
+	ret := _m.ctrl.Call(_m, "Mode")
+	ret0, _ := ret[0].(mgo_v2.Mode)
+	return ret0
+}
+
+func (_mr *_MockSessionManagerRecorder) Mode() *gomock.Call {
+	return _mr.mock.ctrl.RecordCall(_mr.mock, "Mode")
+}
+
+func (_m *MockSessionManager) New() SessionManager {
+	ret := _m.ctrl.Call(_m, "New")
+	ret0, _ := ret[0].(SessionManager)
+	return ret0
+}
+
+func (_mr *_MockSessionManagerRecorder) New() *gomock.Call {
+	return _mr.mock.ctrl.RecordCall(_mr.mock, "New")
+}
+
 func (_m *MockSessionManager) Ping() error {
 	ret := _m.ctrl.Call(_m, "Ping")
 	ret0, _ := ret[0].(error)
@@ -106,6 +196,22 @@ func (_m *MockSessionManager) Ping() error {
 
 func (_mr *_MockSessionManagerRecorder) Ping() *gomock.Call {
 	return _mr.mock.ctrl.RecordCall(_mr.mock, "Ping")
+}
+
+func (_m *MockSessionManager) Refresh() {
+	_m.ctrl.Call(_m, "Refresh")
+}
+
+func (_mr *_MockSessionManagerRecorder) Refresh() *gomock.Call {
+	return _mr.mock.ctrl.RecordCall(_mr.mock, "Refresh")
+}
+
+func (_m *MockSessionManager) ResetIndexCache() {
+	_m.ctrl.Call(_m, "ResetIndexCache")
+}
+
+func (_mr *_MockSessionManagerRecorder) ResetIndexCache() *gomock.Call {
+	return _mr.mock.ctrl.RecordCall(_mr.mock, "ResetIndexCache")
 }
 
 func (_m *MockSessionManager) Run(cmd interface{}, result interface{}) error {
@@ -118,10 +224,96 @@ func (_mr *_MockSessionManagerRecorder) Run(arg0, arg1 interface{}) *gomock.Call
 	return _mr.mock.ctrl.RecordCall(_mr.mock, "Run", arg0, arg1)
 }
 
+func (_m *MockSessionManager) Safe() *mgo_v2.Safe {
+	ret := _m.ctrl.Call(_m, "Safe")
+	ret0, _ := ret[0].(*mgo_v2.Safe)
+	return ret0
+}
+
+func (_mr *_MockSessionManagerRecorder) Safe() *gomock.Call {
+	return _mr.mock.ctrl.RecordCall(_mr.mock, "Safe")
+}
+
+func (_m *MockSessionManager) SelectServers(tags ...bson.D) {
+	_s := []interface{}{}
+	for _, _x := range tags {
+		_s = append(_s, _x)
+	}
+	_m.ctrl.Call(_m, "SelectServers", _s...)
+}
+
+func (_mr *_MockSessionManagerRecorder) SelectServers(arg0 ...interface{}) *gomock.Call {
+	return _mr.mock.ctrl.RecordCall(_mr.mock, "SelectServers", arg0...)
+}
+
+func (_m *MockSessionManager) SetBatch(n int) {
+	_m.ctrl.Call(_m, "SetBatch", n)
+}
+
+func (_mr *_MockSessionManagerRecorder) SetBatch(arg0 interface{}) *gomock.Call {
+	return _mr.mock.ctrl.RecordCall(_mr.mock, "SetBatch", arg0)
+}
+
+func (_m *MockSessionManager) SetBypassValidation(bypass bool) {
+	_m.ctrl.Call(_m, "SetBypassValidation", bypass)
+}
+
+func (_mr *_MockSessionManagerRecorder) SetBypassValidation(arg0 interface{}) *gomock.Call {
+	return _mr.mock.ctrl.RecordCall(_mr.mock, "SetBypassValidation", arg0)
+}
+
+func (_m *MockSessionManager) SetCursorTimeout(d time.Duration) {
+	_m.ctrl.Call(_m, "SetCursorTimeout", d)
+}
+
+func (_mr *_MockSessionManagerRecorder) SetCursorTimeout(arg0 interface{}) *gomock.Call {
+	return _mr.mock.ctrl.RecordCall(_mr.mock, "SetCursorTimeout", arg0)
+}
+
 func (_m *MockSessionManager) SetMode(consistency mgo_v2.Mode, refresh bool) {
 	_m.ctrl.Call(_m, "SetMode", consistency, refresh)
 }
 
 func (_mr *_MockSessionManagerRecorder) SetMode(arg0, arg1 interface{}) *gomock.Call {
 	return _mr.mock.ctrl.RecordCall(_mr.mock, "SetMode", arg0, arg1)
+}
+
+func (_m *MockSessionManager) SetPoolLimit(limit int) {
+	_m.ctrl.Call(_m, "SetPoolLimit", limit)
+}
+
+func (_mr *_MockSessionManagerRecorder) SetPoolLimit(arg0 interface{}) *gomock.Call {
+	return _mr.mock.ctrl.RecordCall(_mr.mock, "SetPoolLimit", arg0)
+}
+
+func (_m *MockSessionManager) SetPrefetch(p float64) {
+	_m.ctrl.Call(_m, "SetPrefetch", p)
+}
+
+func (_mr *_MockSessionManagerRecorder) SetPrefetch(arg0 interface{}) *gomock.Call {
+	return _mr.mock.ctrl.RecordCall(_mr.mock, "SetPrefetch", arg0)
+}
+
+func (_m *MockSessionManager) SetSafe(safe *mgo_v2.Safe) {
+	_m.ctrl.Call(_m, "SetSafe", safe)
+}
+
+func (_mr *_MockSessionManagerRecorder) SetSafe(arg0 interface{}) *gomock.Call {
+	return _mr.mock.ctrl.RecordCall(_mr.mock, "SetSafe", arg0)
+}
+
+func (_m *MockSessionManager) SetSocketTimeout(d time.Duration) {
+	_m.ctrl.Call(_m, "SetSocketTimeout", d)
+}
+
+func (_mr *_MockSessionManagerRecorder) SetSocketTimeout(arg0 interface{}) *gomock.Call {
+	return _mr.mock.ctrl.RecordCall(_mr.mock, "SetSocketTimeout", arg0)
+}
+
+func (_m *MockSessionManager) SetSyncTimeout(d time.Duration) {
+	_m.ctrl.Call(_m, "SetSyncTimeout", d)
+}
+
+func (_mr *_MockSessionManagerRecorder) SetSyncTimeout(arg0 interface{}) *gomock.Call {
+	return _mr.mock.ctrl.RecordCall(_mr.mock, "SetSyncTimeout", arg0)
 }
