@@ -59,6 +59,14 @@ func NewDialInfo(src *mgo.DialInfo) *DialInfo {
 	}
 }
 
+func ParseURL(url string) (*DialInfo, error) {
+	di, err := mgo.ParseURL(url)
+	if err != nil {
+		return nil, err
+	}
+	return NewDialInfo(di), nil
+}
+
 func NewDialer() Dialer {
 	return new(dialer)
 }
