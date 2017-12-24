@@ -1,6 +1,6 @@
 # Percona MongoDB Go driver
 
-[![](https://godoc.org/github.com/percona/toolkit-go/pmgo?status.svg)](https://godoc.org/github.com/percona/toolkit-go/pmgo)
+[![GoDoc](https://godoc.org/github.com/percona/pmgo?status.svg)](https://godoc.org/github.com/percona/pmgo)
 
 **WIP** NOT ALL INTERFACES HAVE BEEN IMPLEMENTED YET  
 
