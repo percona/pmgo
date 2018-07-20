@@ -83,6 +83,18 @@ func (mr *MockDatabaseManagerMockRecorder) Login(user, pass interface{}) *gomock
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Login", reflect.TypeOf((*MockDatabaseManager)(nil).Login), user, pass)
 }
 
+// RemoveUser mocks base method
+func (m *MockDatabaseManager) RemoveUser(user string) error {
+	ret := m.ctrl.Call(m, "RemoveUser", user)
+	ret0, _ := ret[0].(error)
+	return ret0
+}
+
+// RemoveUser indicates an expected call of RemoveUser
+func (mr *MockDatabaseManagerMockRecorder) RemoveUser(user interface{}) *gomock.Call {
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "RemoveUser", reflect.TypeOf((*MockDatabaseManager)(nil).RemoveUser), user)
+}
+
 // Run mocks base method
 func (m *MockDatabaseManager) Run(cmd, result interface{}) error {
 	ret := m.ctrl.Call(m, "Run", cmd, result)
@@ -93,4 +105,16 @@ func (m *MockDatabaseManager) Run(cmd, result interface{}) error {
 // Run indicates an expected call of Run
 func (mr *MockDatabaseManagerMockRecorder) Run(cmd, result interface{}) *gomock.Call {
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Run", reflect.TypeOf((*MockDatabaseManager)(nil).Run), cmd, result)
+}
+
+// UpsertUser mocks base method
+func (m *MockDatabaseManager) UpsertUser(user *x.User) error {
+	ret := m.ctrl.Call(m, "UpsertUser", user)
+	ret0, _ := ret[0].(error)
+	return ret0
+}
+
+// UpsertUser indicates an expected call of UpsertUser
+func (mr *MockDatabaseManagerMockRecorder) UpsertUser(user interface{}) *gomock.Call {
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "UpsertUser", reflect.TypeOf((*MockDatabaseManager)(nil).UpsertUser), user)
 }

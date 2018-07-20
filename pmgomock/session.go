@@ -247,18 +247,6 @@ func (mr *MockSessionManagerMockRecorder) Refresh() *gomock.Call {
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Refresh", reflect.TypeOf((*MockSessionManager)(nil).Refresh))
 }
 
-// RemoveUser mocks base method
-func (m *MockSessionManager) RemoveUser(user string) error {
-	ret := m.ctrl.Call(m, "RemoveUser", user)
-	ret0, _ := ret[0].(error)
-	return ret0
-}
-
-// RemoveUser indicates an expected call of RemoveUser
-func (mr *MockSessionManagerMockRecorder) RemoveUser(user interface{}) *gomock.Call {
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "RemoveUser", reflect.TypeOf((*MockSessionManager)(nil).RemoveUser), user)
-}
-
 // ResetIndexCache mocks base method
 func (m *MockSessionManager) ResetIndexCache() {
 	m.ctrl.Call(m, "ResetIndexCache")
@@ -395,16 +383,4 @@ func (m *MockSessionManager) SetSyncTimeout(d time.Duration) {
 // SetSyncTimeout indicates an expected call of SetSyncTimeout
 func (mr *MockSessionManagerMockRecorder) SetSyncTimeout(d interface{}) *gomock.Call {
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "SetSyncTimeout", reflect.TypeOf((*MockSessionManager)(nil).SetSyncTimeout), d)
-}
-
-// UpsertUser mocks base method
-func (m *MockSessionManager) UpsertUser(user *mgo_v2.User) error {
-	ret := m.ctrl.Call(m, "UpsertUser", user)
-	ret0, _ := ret[0].(error)
-	return ret0
-}
-
-// UpsertUser indicates an expected call of UpsertUser
-func (mr *MockSessionManagerMockRecorder) UpsertUser(user interface{}) *gomock.Call {
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "UpsertUser", reflect.TypeOf((*MockSessionManager)(nil).UpsertUser), user)
 }

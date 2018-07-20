@@ -26,7 +26,6 @@ type SessionManager interface {
 	New() SessionManager
 	Ping() error
 	Refresh()
-	RemoveUser(user string) error
 	ResetIndexCache()
 	Run(cmd interface{}, result interface{}) error
 	Safe() (safe *mgo.Safe)
@@ -40,7 +39,6 @@ type SessionManager interface {
 	SetSafe(safe *mgo.Safe)
 	SetSocketTimeout(d time.Duration)
 	SetSyncTimeout(d time.Duration)
-	UpsertUser(user *mgo.User) error
 }
 
 type Session struct {
@@ -186,12 +184,4 @@ func (s *Session) SetSocketTimeout(d time.Duration) {
 }
 func (s *Session) SetSyncTimeout(d time.Duration) {
 	s.session.SetSyncTimeout(d)
-}
-
-func (s *Session) RemoveUser(user string) error {
-	return s.session.RemoveUser(user)
-}
-
-func (s *Session) UpsertUser(user *mgo.User) error {
-	return s.session.UpsertUser(user)
 }
