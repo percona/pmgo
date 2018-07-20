@@ -13,7 +13,7 @@ type DatabaseManager interface {
 	// Logout()
 	RemoveUser(user string) error
 	Run(cmd interface{}, result interface{}) error
-	UpsertUser(user *User) error
+	UpsertUser(user *mgo.User) error
 	// With(s *Session) *Database
 }
 
