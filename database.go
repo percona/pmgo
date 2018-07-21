@@ -11,9 +11,9 @@ type DatabaseManager interface {
 	// GridFS(prefix string) *GridFS
 	Login(user, pass string) error
 	// Logout()
-	// RemoveUser(user string) error
+	RemoveUser(user string) error
 	Run(cmd interface{}, result interface{}) error
-	// UpsertUser(user *User) error
+	UpsertUser(user *mgo.User) error
 	// With(s *Session) *Database
 }
 
@@ -52,4 +52,12 @@ func (d *Database) Login(user, pass string) error {
 
 func (d *Database) Logout() {
 	d.db.Logout()
+}
+
+func (d *Database) RemoveUser(user string) error {
+	return d.db.RemoveUser(user)
+}
+
+func (d *Database) UpsertUser(user *mgo.User) error {
+	return d.db.UpsertUser(user)
 }
