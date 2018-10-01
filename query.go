@@ -16,7 +16,7 @@ type QueryManager interface {
 	Explain(result interface{}) error
 	For(result interface{}, f func() error) error
 	Hint(indexKey ...string) QueryManager
-	Iter() *mgo.Iter
+	Iter() IterManager
 	Limit(n int) QueryManager
 	LogReplay() QueryManager
 	MapReduce(job *mgo.MapReduce, result interface{}) (info *mgo.MapReduceInfo, err error)
@@ -76,7 +76,7 @@ func (q *Query) Hint(indexKey ...string) QueryManager {
 	return &Query{q.query.Hint(indexKey...)}
 }
 
-func (q *Query) Iter() *mgo.Iter {
+func (q *Query) Iter() IterManager {
 	return q.query.Iter()
 }
 
